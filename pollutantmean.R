@@ -1,8 +1,8 @@
 pollutantmean<-function(directory, pollutant, id=1:332){
   tab<-list.files(directory, full.name=TRUE)
-  app<-data.frame()
-  for(i in id){
-    app<-rbind(app, read.csv(tab[i]))    
+  app<-c()
+  for(i in id){ 
+    app<-c(app, read.csv(tab[i])[,pollutant])
   }
-  return(mean(app[,pollutant], na.rm=TRUE))
+  return(mean(app, na.rm=TRUE))
 }
